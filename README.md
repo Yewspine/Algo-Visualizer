@@ -25,13 +25,29 @@ This software is made for educational purpose. The software allow a user to visu
 |JDK         |22      |
 |JavaFX      |24      |
 
-To compile simply run : 
+To compile run the following : 
+
+1. Run clean test if you want to be sure everything works 
 
 ```bash 
-mvn clean javafx:run
+mvn clean test
 ```
 
-It would compile, create the JAR file, clean any previous build, run test and run the application.
+2. Create the launcher 
+
+```bash
+mvn clean javafx:jlink
+```
+
+3. Copy the target folder with your binaries
+
+```bash
+cp -r target/visualizer /path/to/to/your/binaries
+```
+
+4. Execute the file
+
+Execute the file `visualizer` found at : `visualizer/bin/visualizer`
 
 ## Contribute
 
