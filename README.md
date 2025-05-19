@@ -4,11 +4,12 @@
 - [About](#About)
 - [Features](#Features)
 - [Build](#Build)
+    - [Depedencies](#Depedencies)
 - [Contribute](#Contribute)
 - [Report Bug](#Issue)
 ## About
 
-This software is made for education purpose. The software allow a user to visualize how a given algorithm actually work. Using visual feedback, the software will descend step by step the code of an algorithm and show what's happening to the data. It will also contain further information like Space and Time complexity, algorithm history, different implementation in different language, and a resumee of how the algo work.
+This software is made for educational purpose. The software allow a user to visualize how a given algorithm actually work. Using visual feedback, the software will descend step by step the code of an algorithm and show what's happening to the data. It will also contain further information like Space and Time complexity, algorithm history, different implementation in different language, and a resumee of how the algo work.
 
 ## Features
 
@@ -16,21 +17,21 @@ This software is made for education purpose. The software allow a user to visual
 
 ## Build
 
-This project use Maven version 3.8.7, and JDK 17. In case you want to build it yourself, use those tools versions.
+### Depedencies
+
+|Depedencie  |Version |
+|:----------:|:------:|
+|Maven       |3.8.7   |
+|JDK         |22      |
+|JavaFX      |24      |
 
 To compile simply run : 
 
 ```bash 
-mvn clean package
+mvn clean javafx:run
 ```
 
-It would compile, create the JAR file, clean any previous build and run every tests. Then, you can directly run the JAR file using:
-
-```bash
-java -cb target/visualizer-<VERSION>.jar com.yewspine.visualizer.App
-```
-
-Where you replace the `<VERSION>` placeholder with the current version described in the `pom.xml` file.
+It would compile, create the JAR file, clean any previous build, run test and run the application.
 
 ## Contribute
 
