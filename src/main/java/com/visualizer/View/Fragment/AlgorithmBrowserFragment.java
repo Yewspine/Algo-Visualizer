@@ -1,8 +1,10 @@
 package com.visualizer.View.Fragment;
 
-import java.utils.Predicate;
+import java.util.function.Predicate;
+import java.util.stream.Collection;
 
 import javafx.geometry.Insets;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
