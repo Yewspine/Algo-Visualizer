@@ -6,5 +6,5 @@ import com.visualizer.DomainObject.Algorithm;
 
 public interface AlgorithmBrowser
 {
-  public toggleCategory(ActionEvent event);
+  void toggleCategory(ActionEvent event);
 }
