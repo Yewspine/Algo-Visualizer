@@ -1,7 +1,10 @@
 package com.visualizer.View.Fragment;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collection;
+import java.util.stream.Collectors;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.ListView;
@@ -11,19 +14,34 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import com.visualizer.DomainObject.Algorithm;
-import com.visualizer.ViewModel.AlgorithmBrowserController;
+import com.visualizer.ViewModel.AlgorithmBrowserViewModel; 
 import com.visualizer.View.Fragment.FragmentView;
 
-public class AlgorithmBrowserFragment extends FragmentView<AlgorithmBrowserController>
+public class AlgorithmBrowserFragment extends FragmentView<AlgorithmBrowserViewModel>
 {
 
-  public AlgorithmBrowserFragment(AlgorithmBrowserController viewModel)
+  private Algorithm[] algorithms;
+
+  public AlgorithmBrowserFragment(AlgorithmBrowserViewModel viewModel)
   {
     super(viewModel);
     createView();
+    this.algorithms = setAlgorithms();
   }
 
-  private void createView()
+  private Algorithm[] setAlgorithms()
+  {
+    Algorithm[] algorithms = { 
+      new Algorithm("Sort", "Bubble Sort"),
+      new Algorithm("Sort", "Communist Sort"),
+      new Algorithm("Sort", "Boggo Sort"),
+      new Algorithm("Sort", "Insertion Sort")
+    };
+    return algorithms;
+  }
+
+  @Override
+  protected void createView()
   {
     VBox vbox = new VBox();
     vbox.setPadding(new Insets(10));
@@ -39,7 +57,7 @@ public class AlgorithmBrowserFragment extends FragmentView<AlgorithmBrowserContr
     show_all_button.setOnAction(event -> controller.toggleCategory(event));
     show_all_button.setUserData( (Predicate<Algorithm>) ( Algorithm algorithm ) -> true );
 
-    List<ToggleButton> category_toggle_buttons = Array.asList(algorithms)
+    List<ToggleButton> category_toggle_buttons = Arrays.asList(this.algorithms)
       .stream()
       .map((algorithm) -> algorithm.getAlgorithmType())
       .distinct()
@@ -57,9 +75,9 @@ public class AlgorithmBrowserFragment extends FragmentView<AlgorithmBrowserContr
     hbox.getChildren().addAll(category_toggle_buttons);
 
     ListView<Algorithm> list_view = new ListView<>();
-    list_view.itemsProperty().bind(list_filter.viewableProperty());
+    //list_view.itemsProperty().bind(list_filter.viewableProperty());
 
-    vbox.getChildren.addAll(hbox, list_view);
+    vbox.getChildren().addAll(hbox, list_view);
 
   }
 }
