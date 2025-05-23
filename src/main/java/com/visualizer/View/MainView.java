@@ -4,7 +4,7 @@ import javafx.scene.layout.BorderPane;
 
 import com.visualizer.ViewModel.AlgorithmBrowserViewModel;
 import com.visualizer.ViewModel.SelectorFragmentViewModel;
-import com.visualizer.View.AlgorithmBrowserFragment;
+import com.visualizer.View.Fragment.AlgorithmBrowserFragment;
 import com.visualizer.View.Fragment.SelectorFragment;
 
 public class MainView extends BorderPane
