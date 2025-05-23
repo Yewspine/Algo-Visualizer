@@ -27,7 +27,7 @@ public class SelectorFragment extends FragmentView<SelectorFragmentViewModel>
 
   private void initChoice()
   {
-    ObservableList<Pair<String, String>> language_classes = FXCollections.observableArrayList();;
+    ObservableList<Pair<String, String>> language_classes = FXCollections.observableArrayList();
     language_classes.addAll(
       EMPTY_PAIR,
       new Pair("Pascal", "pas"),
