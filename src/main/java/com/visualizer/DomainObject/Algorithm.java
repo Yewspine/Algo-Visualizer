@@ -1,6 +1,6 @@
 package com.visualizer.DomainObject;
 
-public static class Algorithm
+public class Algorithm
 {
   private final String algorithm_type;
   private final String algorithm_name;
