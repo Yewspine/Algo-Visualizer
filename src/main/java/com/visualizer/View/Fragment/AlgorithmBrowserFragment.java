@@ -1,7 +1,5 @@
 package com.visualizer.View.Fragment;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -13,71 +11,60 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import com.visualizer.DomainObject.Algorithm;
-import com.visualizer.ViewModel.AlgorithmBrowserViewModel; 
-import com.visualizer.View.Fragment.FragmentView;
+import com.visualizer.Model.Algorithm;
+import com.visualizer.ViewModel.AlgorithmBrowserViewModel;
 
-public class AlgorithmBrowserFragment extends FragmentView<AlgorithmBrowserViewModel>
+public class AlgorithmBrowserFragment extends FragmentView<AlgorithmBrowserViewModel> 
 {
 
-  private Algorithm[] algorithms;
+  private ListView<Algorithm> list_view;
 
-  public AlgorithmBrowserFragment(AlgorithmBrowserViewModel viewModel)
+  public AlgorithmBrowserFragment(AlgorithmBrowserViewModel viewModel) 
   {
     super(viewModel);
-    createView();
-    this.algorithms = setAlgorithms();
-  }
-
-  private Algorithm[] setAlgorithms()
-  {
-    Algorithm[] algorithms = { 
-      new Algorithm("Sort", "Bubble Sort"),
-      new Algorithm("Sort", "Communist Sort"),
-      new Algorithm("Sort", "Boggo Sort"),
-      new Algorithm("Sort", "Insertion Sort")
-    };
-    return algorithms;
+    createView(); 
   }
 
   @Override
-  protected void createView()
+  protected void createView() 
   {
+
     VBox vbox = new VBox();
     vbox.setPadding(new Insets(10));
-    vbox.setSpacing(4);
+    vbox.setSpacing(10);
 
     HBox hbox = new HBox();
-    hbox.setSpacing(2);
+    hbox.setSpacing(6);
 
     ToggleGroup filter_toggle_group = new ToggleGroup();
-    ToggleButton show_all_button = new ToggleButton("Show all");
+
+    ToggleButton show_all_button = new ToggleButton("Show All");
     show_all_button.setSelected(true);
     show_all_button.setToggleGroup(filter_toggle_group);
-    show_all_button.setOnAction(event -> controller.toggleCategory(event));
-    show_all_button.setUserData( (Predicate<Algorithm>) ( Algorithm algorithm ) -> true );
+    show_all_button.setUserData((Predicate<Algorithm>) algo -> true);
+    show_all_button.setOnAction(controller::toggleCategory);
+    hbox.getChildren().add(show_all_button);
 
-    List<ToggleButton> category_toggle_buttons = Arrays.asList(this.algorithms)
+    List<String> categories = controller.getDiscoverableAlgorithms()
       .stream()
-      .map((algorithm) -> algorithm.getAlgorithmType())
+      .map(Algorithm::getAlgorithmType)
       .distinct()
-      .map((category) -> {
-        ToggleButton toggle_button = new ToggleButton(category);
-        toggle_button.setToggleGroup( filter_toggle_group );
-        toggle_button.setOnAction(event -> controller.toggleCategory(event));
-        toggle_button.setUserData( ( Predicate<Algorithm>) (Algorithm algorithm) -> algorithm.equals(algorithm.getAlgorithmType()) );
-        return toggle_button;
-      })
       .collect(Collectors.toList());
 
+    for (String category : categories) 
+    {
+      ToggleButton toggle_button = new ToggleButton(category);
+      toggle_button.setToggleGroup(filter_toggle_group);
+      toggle_button.setUserData((Predicate<Algorithm>) algo -> category.equals(algo.getAlgorithmType()));
+      toggle_button.setOnAction(controller::toggleCategory);
+      hbox.getChildren().add(toggle_button);
+    }
 
-    hbox.getChildren().add(show_all_button);
-    hbox.getChildren().addAll(category_toggle_buttons);
-
-    ListView<Algorithm> list_view = new ListView<>();
-    //list_view.itemsProperty().bind(list_filter.viewableProperty());
+    list_view = new ListView<>();
+    list_view.itemsProperty().bind(controller.filteredAlgorithmsProperty());
 
     vbox.getChildren().addAll(hbox, list_view);
-
+    this.getChildren().add(vbox);
   }
 }
+
