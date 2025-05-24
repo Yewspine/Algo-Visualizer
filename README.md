@@ -24,6 +24,7 @@ This software is made for educational purpose. The software allow a user to visu
 |Maven       |3.8.7   |
 |JDK         |22      |
 |JavaFX      |24      |
+|Reflection  |0.10.2  |
 
 To compile run the following : 
 
@@ -78,3 +79,7 @@ git push
 ## Issue
 
 If you encounter a bug, please report it using the Issue tab on github and create a new Issue, I will review it when I would have time
+
+## Note 
+
+If you have an idea for the name of the application, feel free to tell it, because Calling it " Visualizer " can be frustrating
