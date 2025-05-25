@@ -13,8 +13,11 @@ public class AlgorithmRegistry
 {
   public static class DescribedAlgorithm implements Algorithm 
   {
-    public final Algorithm instance;
-    public final AlgorithmMetadata metadata;
+    public Algorithm instance;
+    public AlgorithmMetadata metadata;
+
+    public DescribedAlgorithm()
+    {}
 
     public DescribedAlgorithm(Algorithm instance, AlgorithmMetadata metadata) 
     {
@@ -35,6 +38,7 @@ public class AlgorithmRegistry
     }
   }
 
+  // Reflection Algorithm
   public static List<DescribedAlgorithm> discover()
   {
     // Scan com.visualizer.Algorithms directory
@@ -42,23 +46,27 @@ public class AlgorithmRegistry
     // Get every class that inherit from Algorithm interface
     return reflections.getSubTypesOf(Algorithm.class)
       .stream()
+      // Remove internal class 
+      .filter(algo_class -> !algo_class.getName().contains("$"))
+      // Should be uncommented if Abstract class are found in the reflection
+      //.filter(algo_class -> !java.lang.reflect.Modifier.isAbstract(algo_class.getModifiers()))
       .map(algo_class -> 
       {
         try
         {
           // Create new context class instance
           Algorithm instance = algo_class.getDeclaredConstructor().newInstance();
-          
-          if ( !(instance instanceof AlgorithmMetadata) )
+          AlgorithmMetadata metadata = algo_class.getAnnotation(AlgorithmMetadata.class);
+          if ( metadata == null )
           {
             System.err.println("Error loading algorithm: " + algo_class.getName());
             return null;   
           }
-
-          AlgorithmMetadata metadata = (AlgorithmMetadata) instance;
+ 
           return new DescribedAlgorithm(instance, metadata);
         } catch ( Exception exception )
         {
+          System.err.println("Handled Exception");
           exception.printStackTrace();
           return null;
         }

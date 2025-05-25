@@ -11,6 +11,9 @@ import com.visualizer.Model.AlgorithmMetadata;
 public class BubbleSort implements Algorithm
 {
 
+  public BubbleSort()
+  {}
+
   @Override
   public String getAlgorithmType()
   {
