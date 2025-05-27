@@ -16,7 +16,6 @@ import com.visualizer.ViewModel.SelectorFragmentViewModel;
 public class SelectorFragment extends FragmentView<SelectorFragmentViewModel> 
 {
   private final ChoiceBox<Pair<String, String>> language = new ChoiceBox<>();
-  private final static Pair<String, String> EMPTY_PAIR = new Pair<>("", "");
 
   public SelectorFragment(SelectorFragmentViewModel viewModel)
   {
@@ -28,8 +27,7 @@ public class SelectorFragment extends FragmentView<SelectorFragmentViewModel>
   private void initChoice()
   {
     ObservableList<Pair<String, String>> language_classes = FXCollections.observableArrayList();
-    language_classes.addAll(
-      EMPTY_PAIR,
+    language_classes.addAll( 
       new Pair("Pascal", "pas"),
       new Pair("C++", "cpp"),
       new Pair("C", "c"),
