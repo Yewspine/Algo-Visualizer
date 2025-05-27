@@ -24,6 +24,11 @@ public class AlgorithmRegistry
       this.instance = instance;
       this.metadata = metadata;
     }
+ 
+    public String getAlgorithmName()
+    {
+      return metadata.name();
+    }
 
     @Override
     public String getAlgorithmType() 
