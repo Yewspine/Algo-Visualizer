@@ -41,6 +41,13 @@ public class AlgorithmRegistry
     {
       instance.execute();
     }
+
+    @Override
+    public String toString() 
+    {
+      return getAlgorithmName();
+    }
+
   }
 
   // Reflection Algorithm
