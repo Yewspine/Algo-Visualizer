@@ -1,15 +1,14 @@
 package com.visualizer.ViewModel;
 
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.ReadOnlyObjectProperty;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import javafx.event.ActionEvent;
-import javafx.scene.control.ToggleButton;
 
 import com.visualizer.DomainObject.Algorithms.AlgorithmRegistry;
 import com.visualizer.Model.Algorithm;
@@ -17,14 +16,15 @@ import com.visualizer.Model.AlgorithmBrowser;
 
 public class AlgorithmBrowserViewModel implements AlgorithmBrowser
 {
-
   private final ObservableList<Algorithm> discovered_algorithms;
   private final FilteredList<Algorithm> filtered_algorithm;
+  private final ReadOnlyObjectWrapper<FilteredList<Algorithm>> filtered_algorithm_property;
 
   public AlgorithmBrowserViewModel()
   {
     this.discovered_algorithms = FXCollections.observableArrayList(AlgorithmRegistry.discover());
     this.filtered_algorithm = new FilteredList<>(discovered_algorithms, algorithm -> true);
+    this.filtered_algorithm_property = new ReadOnlyObjectWrapper<>(filtered_algorithm);
   }
 
   @Override
@@ -34,16 +34,20 @@ public class AlgorithmBrowserViewModel implements AlgorithmBrowser
   }
 
   @Override
-  public ObjectProperty<ObservableList<Algorithm>> filteredAlgorithmsProperty()
+  public ReadOnlyObjectProperty<FilteredList<Algorithm>> filteredAlgorithmsProperty() 
   {
-    return new SimpleObjectProperty<>(filtered_algorithm);
+    return filtered_algorithm_property.getReadOnlyProperty();
   }
-
   @Override
-  public void toggleCategory(ActionEvent event)
+  public void toggleCategory(String selected_category)
   {
-    ToggleButton toggled_button = (ToggleButton)event.getSource();
-    Predicate<Algorithm> filter = (Predicate<Algorithm>)toggled_button.getUserData();
-    filtered_algorithm.setPredicate(filter);
+    if (selected_category.equals("Show All")) 
+    { 
+      filtered_algorithm.setPredicate(algorithm -> true);
+    } 
+    else 
+    {
+      filtered_algorithm.setPredicate(algo -> selected_category.equals(algo.getAlgorithmType()));
+    } 
   }
 }

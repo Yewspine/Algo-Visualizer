@@ -1,7 +1,6 @@
 package com.visualizer.View.Fragment;
 
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
@@ -17,7 +16,6 @@ import com.visualizer.ViewModel.AlgorithmBrowserViewModel;
 
 public class AlgorithmBrowserFragment extends FragmentView<AlgorithmBrowserViewModel> 
 {
-
   private final ChoiceBox<String> algorithm_type = new ChoiceBox<>();
   private static final String DEFAULT_CHOICE = "Show All";
   private ListView<Algorithm> list_view;
@@ -40,19 +38,15 @@ public class AlgorithmBrowserFragment extends FragmentView<AlgorithmBrowserViewM
       .distinct()
       .collect(Collectors.toList());
 
-    for (String category : categories) 
-    {
-      algorithm_class.add(category);
-    }
+    algorithm_class.addAll(categories);
 
     algorithm_type.setItems(algorithm_class);
-    algorithm_type.setValue(algorithm_type.getItems().get(0));
+    algorithm_type.setValue(DEFAULT_CHOICE);
   }
 
   @Override
   protected void createView() 
   {
-
     VBox vbox = new VBox();
     vbox.setPadding(new Insets(10));
     vbox.setSpacing(10);
@@ -60,8 +54,10 @@ public class AlgorithmBrowserFragment extends FragmentView<AlgorithmBrowserViewM
     HBox hbox = new HBox();
     hbox.setSpacing(6);
 
-    //toggle_button.setUserData((Predicate<Algorithm>) algo -> category.equals(algo.getAlgorithmType()));
-    //toggle_button.setOnAction(controller::toggleCategory);
+    algorithm_type.setOnAction(event -> 
+      controller.toggleCategory(algorithm_type.getValue())
+    );
+
     hbox.getChildren().add(algorithm_type);
 
     list_view = new ListView<>();
@@ -71,4 +67,3 @@ public class AlgorithmBrowserFragment extends FragmentView<AlgorithmBrowserViewM
     this.getChildren().add(vbox);
   }
 }
-
