@@ -14,7 +14,7 @@ import com.visualizer.DomainObject.Algorithms.AlgorithmRegistry;
 import com.visualizer.Model.Algorithm;
 import com.visualizer.Model.AlgorithmBrowser;
 
-/*
+/**
  * This class is the controller of the AlgorithmBrowserFragment, it interact with 
  * the AlgorithmRegistry and filter when the Discovered algorithm
  * @see com.visualizer.View.Fragment.AlgorithmBrowserFragment
@@ -34,7 +34,7 @@ public class AlgorithmBrowserViewModel implements AlgorithmBrowser
     this.filtered_algorithm_property = new ReadOnlyObjectWrapper<>(filtered_algorithm);
   }
 
-  /*
+  /**
    * Get a List discovered Algorithm without filtering
    * @return The discovered algorihm 
    * */
@@ -44,7 +44,7 @@ public class AlgorithmBrowserViewModel implements AlgorithmBrowser
     return discovered_algorithms;
   }
 
-  /*
+  /**
    * Retrieve algorithm properties on filtered List
    * @return a Read Only List of Algorithm Property Object 
    * */
@@ -54,7 +54,7 @@ public class AlgorithmBrowserViewModel implements AlgorithmBrowser
     return filtered_algorithm_property.getReadOnlyProperty();
   }
 
-  /*
+  /**
    * filter the displayed category in the ListView based on the Choice made on the ChoiceBox
    * @param selected_category the category selected in the ChoiceBox
    * */

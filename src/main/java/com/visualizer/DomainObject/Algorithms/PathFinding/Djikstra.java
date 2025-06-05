@@ -3,7 +3,7 @@ package com.visualizer.DomainObject.Algorithms.PathFinding;
 import com.visualizer.Model.Algorithm;
 import com.visualizer.Model.AlgorithmMetadata;
 
-/*
+/**
  * This class implement the Djikstra algorithm with it's executor and it's metadata
  * The algorithm metadata are stored into the decorator, and the executor is in 
  * the body of the class

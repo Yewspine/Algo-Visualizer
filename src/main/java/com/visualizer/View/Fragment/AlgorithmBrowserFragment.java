@@ -14,8 +14,8 @@ import javafx.scene.layout.VBox;
 import com.visualizer.Model.Algorithm;
 import com.visualizer.ViewModel.AlgorithmBrowserViewModel;
 
-/*
- * The View constructor for the Algorithm Browser. It contain a ListView listing every exisiting algorithm 
+/**
+ * The View constructor for the Algorithm Browser, It contain a ListView listing every exisiting algorithm 
  * and a ChoiceBox to filter Algorithm by categories.
  * @see com.visualizer.View.Fragment.FragmentView#FragmentView 
  * @author Yewspine
@@ -33,7 +33,7 @@ public class AlgorithmBrowserFragment extends FragmentView<AlgorithmBrowserViewM
     createView(); 
   }
 
-  /*
+  /**
    * Populate the choiceBox with Algorithm categories 
    * */
   private void initChoice()
@@ -53,7 +53,7 @@ public class AlgorithmBrowserFragment extends FragmentView<AlgorithmBrowserViewM
     algorithm_type.setValue(DEFAULT_CHOICE);
   }
 
-  /*
+  /**
    * Create the LeftBar View for the BorderPane and bind the controller
    * */
   @Override

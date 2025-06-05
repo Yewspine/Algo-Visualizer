@@ -13,7 +13,7 @@ import com.visualizer.Converter.PairStringConverter;
 import com.visualizer.View.Fragment.FragmentView;
 import com.visualizer.ViewModel.SelectorFragmentViewModel;
 
-/*
+/**
  * Create the SelectorFragment, which will evolve in a complete toolbar 
  * to let user interact with the software 
  * @author Yewspine
@@ -29,7 +29,7 @@ public class SelectorFragment extends FragmentView<SelectorFragmentViewModel>
     createView();
   }
 
-  /*
+  /**
    * Poplate the ChoiceBox with hardcoded languages to choose from.
    * */
   private void initChoice()
@@ -53,7 +53,7 @@ public class SelectorFragment extends FragmentView<SelectorFragmentViewModel>
     language.setValue(language.getItems().get(0)); 
   }
 
-  /*
+  /**
    * Create the view for the toolbar and bind the controller to it
    * */
   @Override
@@ -62,7 +62,7 @@ public class SelectorFragment extends FragmentView<SelectorFragmentViewModel>
     try
     { 
       Label language_label = new Label("Change language implementation");  
-      language.setOnAction(event -> controller.apply_language(language.getValue()));
+      language.setOnAction(event -> controller.selectLanguage(language.getValue()));
 
       ToolBar bar = new ToolBar(      
         language_label, 

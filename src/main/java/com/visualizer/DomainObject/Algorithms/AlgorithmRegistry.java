@@ -9,17 +9,17 @@ import org.reflections.Reflections;
 import com.visualizer.Model.Algorithm;
 import com.visualizer.Model.AlgorithmMetadata;
 
-/*
+/**
  * This class handle the reflections algorithm used to list every 
  * Algorithm created, they will be displayed and their interface linked in the 
  * ListView of the AlgorithmBrowserFragment
- * @see AlgorithmBrowserFragment
+ * @see com.visualizer.View.Fragment.AlgorithmBrowserFragment
  * @author Yewspine
  * */
 public class AlgorithmRegistry 
 {
 
-  /* 
+  /** 
    * A Described algorithm is an Algorithm with a runnable instance and 
    * It metadata. 
    * @see com.visualizer.Model.Algorithm
@@ -40,7 +40,7 @@ public class AlgorithmRegistry
       this.metadata = metadata;
     }
  
-    /*
+    /**
      * Return the name of the algorithm stored in the Decorator
      * @return The name of the algorithm
      * */
@@ -49,7 +49,7 @@ public class AlgorithmRegistry
       return metadata.name();
     }
 
-    /*
+    /**
      * Return the category of the algorithm stored in the decorator, 
      * to sort them in the ListView
      * @return The category of the algorithm
@@ -59,8 +59,8 @@ public class AlgorithmRegistry
       return metadata.category();
     }
 
-    /*
-     * Return the description of the algorithm. It's not used for the moment,
+    /**
+     * Return the description of the algorithm, It's not used for the moment,
      * but I plan to split it in multiple parts
      * @return the description of the algorithm 
      * */
@@ -69,7 +69,7 @@ public class AlgorithmRegistry
       return metadata.description();
     }
 
-    /*
+    /**
      * The execute method from the Algorithm interface
      * @see com.visualizer.Model.Algorithm
      * */
@@ -79,8 +79,8 @@ public class AlgorithmRegistry
       instance.execute();
     }
 
-    /*
-     * This method exists because by default List<> Call of toString() display the
+    /**
+     * This method exists because by default <pre>{@code List<>}</pre> Call of <code>toString()</code> display the
      * reflected name of the class, however, I needed the Algorithm Name.
      * @see DescribedAlgorithm#getAlgorithmName
      * @return The algorithm name from <code>getAlgorithmName</code>
@@ -93,9 +93,9 @@ public class AlgorithmRegistry
 
   }
 
-  /*
-   * Discover valid algorithm under the com.visualizer.DomainObject.Algorithms 
-   * package. It already handle internal class and not activated yet, can handle
+  /**
+   * Discover valid algorithm under algorithms subfolder, 
+   * It already handle internal class and not activated yet, can handle
    * abstract classes too.
    * @return It return a list of DescribedAlgorithm, if metadata are missing it return <code>null</code> 
    * @see DescribedAlgorithm
