@@ -1,0 +1,11 @@
+array = [ 5, 7, 3, 0, 6, 10, 1, 12, 4]
+
+def bubble_sort(array):
+  for i in range(len(array) - 1, 1):
+    for j in range(0, i-1):
+      if array[j+1] < array[j]:
+        temp = array[j+1]
+        array[j+1] = array[j]
+        array[j] = temp
+
+bubble_sort(array)
