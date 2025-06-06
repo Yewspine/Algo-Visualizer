@@ -67,7 +67,7 @@ public class AlgorithmBrowserViewModel implements AlgorithmBrowser
     } 
     else 
     {
-      filtered_algorithm.setPredicate(algo -> selected_category.equals(algo.getAlgorithmCategory()));
+      filtered_algorithm.setPredicate(algo -> selected_category.equals(algo.getMetadata().category()));
     } 
   }
 }
