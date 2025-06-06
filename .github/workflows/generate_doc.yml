@@ -28,7 +28,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git switch --orphan docs
-          git rm -rf .
+          rm -rf -- * .[^.]* || true
           mkdir -p docs
           cp -r target/site/apidocs/* docs/ || cp -r target/site/* docs/
           git add docs
