@@ -19,11 +19,11 @@ public class Djikstra implements Algorithm
 
   public Djikstra()
   {}
-
-
-  public String getAlgorithmCategory()
+  
+  @Override
+  public AlgorithmMetadata getMetadata()
   {
-    return "PathFinding";
+    return this.getClass().getAnnotation(AlgorithmMetadata.class);
   }
 
   /*

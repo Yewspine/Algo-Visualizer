@@ -10,9 +10,7 @@ import com.visualizer.Model.Algorithm;
 import com.visualizer.Model.AlgorithmMetadata;
 
 /**
- * This class handle the reflections algorithm used to list every 
- * Algorithm created, they will be displayed and their interface linked in the 
- * ListView of the AlgorithmBrowserFragment
+ * Reflection algorithm used to list every Algorithm created
  * @see com.visualizer.View.Fragment.AlgorithmBrowserFragment
  * @author Yewspine
  * */
@@ -21,7 +19,7 @@ public class AlgorithmRegistry
 
   /** 
    * A Described algorithm is an Algorithm with a runnable instance and 
-   * It metadata. 
+   * Its metadata. 
    * @see com.visualizer.Model.Algorithm
    * @see com.visualizer.Model.AlgorithmMetadata
    * @author Yewspine
@@ -39,7 +37,13 @@ public class AlgorithmRegistry
       this.instance = instance;
       this.metadata = metadata;
     }
- 
+
+    @Override
+    public AlgorithmMetadata getMetadata()
+    {
+      return metadata;
+    }
+
     /**
      * Return the name of the algorithm stored in the Decorator
      * @return The name of the algorithm
@@ -52,7 +56,7 @@ public class AlgorithmRegistry
     /**
      * Return the category of the algorithm stored in the decorator, 
      * to sort them in the ListView
-     * @return The category of the algorithm
+     * @return The type of algorithm ( e.g : Sort, Pathfinding, etc... )
      * */
     public String getAlgorithmCategory() 
     {
@@ -60,12 +64,12 @@ public class AlgorithmRegistry
     }
 
     /**
-     * Return the description of the algorithm, It's not used for the moment,
-     * but I plan to split it in multiple parts
+     * Return the description of the algorithm, It's not used for the moment, 
      * @return the description of the algorithm 
      * */
     public String getAlgorithmDescription()
     {
+      // @TODO Add a History or Further Pane in the main view, listing information about the algorithm
       return metadata.description();
     }
 
@@ -81,9 +85,9 @@ public class AlgorithmRegistry
 
     /**
      * This method exists because by default <pre>{@code List<>}</pre> Call of <code>toString()</code> display the
-     * reflected name of the class, however, I needed the Algorithm Name.
+     * reflected name of the class, however, I needed the Algorithm Name I set in the Metadata.
      * @see DescribedAlgorithm#getAlgorithmName
-     * @return The algorithm name from <code>getAlgorithmName</code>
+     * @return The algorithm name from <pre>getAlgorithmName</pre>
      * */
     @Override
     public String toString() 
@@ -94,10 +98,9 @@ public class AlgorithmRegistry
   }
 
   /**
-   * Discover valid algorithm under algorithms subfolder, 
-   * It already handle internal class and not activated yet, can handle
-   * abstract classes too.
-   * @return It return a list of DescribedAlgorithm, if metadata are missing it return <code>null</code> 
+   * Discover valid algorithm under <pre>algorithms</pre> subfolder
+   * It already handle internal and can handle abstract classes too if needed.
+   * @return A list of <pre>DescribedAlgorithm</pre>, if metadata are missing it return <code>null</code> 
    * @see DescribedAlgorithm
    * */
   public static List<DescribedAlgorithm> discover()
@@ -121,6 +124,7 @@ public class AlgorithmRegistry
           if ( metadata == null )
           {
             // Will add a real logging system later
+            // @TODO Use some log4j or such to create error logs
             System.err.println("Error loading algorithm: " + algo_class.getName());
             return null;   
           }

@@ -22,9 +22,9 @@ public class BubbleSort implements Algorithm
   {}
 
   @Override
-  public String getAlgorithmCategory()
+  public AlgorithmMetadata getMetadata()
   {
-    return "Sort";
+    return this.getClass().getAnnotation(AlgorithmMetadata.class);
   }
 
   /**

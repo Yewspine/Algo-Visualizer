@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * This interface define a decorator to set Algorithm Metadata 
+ * Algorithm Metadata Decorator, Way easier to deal with when it comes to reflection
  * @author Yewspine
  * */
 @Retention(RetentionPolicy.RUNTIME)
