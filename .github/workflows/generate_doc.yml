@@ -32,11 +32,11 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git switch --orphan docs
           cp -r target/reports/apidocs /tmp/javadoc-copy
-          cp .git /tmp
+          cp -r .git /tmp
           rm -rf -- * .[^.]* || true
           mkdir -p docs
           cp -r /tmp/javadoc-copy/* docs/
-          cp /tmp/.git ./
+          cp -r /tmp/.git ./
           git add docs
           git commit -m "Generate Javadoc documentation"
       
