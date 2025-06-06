@@ -10,21 +10,21 @@ import javafx.scene.control.ToolBar;
 import javafx.util.Pair;
 
 import com.visualizer.Converter.PairStringConverter;
+import com.visualizer.DomainObject.Coordinator;
 import com.visualizer.View.Fragment.FragmentView;
-import com.visualizer.ViewModel.SelectorFragmentViewModel;
 
 /**
  * Create the SelectorFragment, which will evolve in a complete toolbar 
- * to let user interact with the software 
+ * to let user set his preferences in the software 
  * @author Yewspine
  * */
-public class SelectorFragment extends FragmentView<SelectorFragmentViewModel> 
+public class SelectorFragment extends FragmentView<Coordinator> 
 {
   private final ChoiceBox<Pair<String, String>> language = new ChoiceBox<>();
-
-  public SelectorFragment(SelectorFragmentViewModel viewModel)
+ 
+  public SelectorFragment(Coordinator coordinator)
   {
-    super(viewModel);
+    super(coordinator); 
     initChoice();
     createView();
   }
