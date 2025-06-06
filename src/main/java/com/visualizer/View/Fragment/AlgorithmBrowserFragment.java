@@ -11,11 +11,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import com.visualizer.DomainObject.Coordinator;
 import com.visualizer.Model.Algorithm;
+import com.visualizer.Model.AlgorithmMetadata;
 import com.visualizer.ViewModel.AlgorithmBrowserViewModel;
 
 /**
- * The View constructor for the Algorithm Browser, It contain a ListView listing every exisiting algorithm 
+ * The View constructor for the Algorithm Browser, It contain a ListView listing every algorithm 
  * and a ChoiceBox to filter Algorithm by categories.
  * @see com.visualizer.View.Fragment.FragmentView#FragmentView 
  * @author Yewspine
@@ -23,12 +25,14 @@ import com.visualizer.ViewModel.AlgorithmBrowserViewModel;
 public class AlgorithmBrowserFragment extends FragmentView<AlgorithmBrowserViewModel> 
 {
   private final ChoiceBox<String> algorithm_type = new ChoiceBox<>();
+  private final Coordinator coordinator;
   private static final String DEFAULT_CHOICE = "Show All";
   private ListView<Algorithm> list_view;
 
-  public AlgorithmBrowserFragment(AlgorithmBrowserViewModel viewModel) 
+  public AlgorithmBrowserFragment(AlgorithmBrowserViewModel viewModel, Coordinator coordinator) 
   {
     super(viewModel);
+    this.coordinator = coordinator;
     initChoice();
     createView(); 
   }
@@ -43,7 +47,7 @@ public class AlgorithmBrowserFragment extends FragmentView<AlgorithmBrowserViewM
 
     List<String> categories = controller.getDiscoverableAlgorithms()
       .stream()
-      .map(Algorithm::getAlgorithmCategory)
+      .map(algorithm -> algorithm.getMetadata().category())
       .distinct()
       .collect(Collectors.toList());
 
@@ -74,6 +78,16 @@ public class AlgorithmBrowserFragment extends FragmentView<AlgorithmBrowserViewM
 
     list_view = new ListView<>();
     list_view.itemsProperty().bind(controller.filteredAlgorithmsProperty());
+    // Send information over Event Broker
+    list_view.getSelectionModel().selectedItemProperty().addListener((obs, old, fresh) -> {
+      if ( fresh != null )
+      {
+        coordinator.selectAlgorithm(
+          // Get the name of the alogrithm in the metadata
+          fresh.getMetadata().name()
+        );
+      }
+    });
 
     vbox.getChildren().addAll(hbox, list_view);
     this.getChildren().add(vbox);
