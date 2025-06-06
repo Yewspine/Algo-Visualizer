@@ -8,9 +8,8 @@ import javafx.collections.transformation.FilteredList;
 import com.visualizer.Model.Algorithm;
 
 /**
- * This interface define the behaviour of the AlgorithmBrowser Controller,
- * It is here to respect the contract of the FragmentView abstract class.
- * @see com.visualizer.View.Fragment.FragmentView
+ * Define the behaviour of the AlgorithmBrowser Controller,
+ * @see com.visualizer.ViewModel.AlgorithmBrowserViewModel
  * @author Yewspine
  * */
 public interface AlgorithmBrowser
