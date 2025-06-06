@@ -1,6 +1,7 @@
 module com.visualizer {
   requires javafx.controls;
   requires org.reflections; 
+  exports com.visualizer;
   exports com.visualizer.Converter;
   exports com.visualizer.DomainObject;
   exports com.visualizer.DomainObject.Algorithms;
