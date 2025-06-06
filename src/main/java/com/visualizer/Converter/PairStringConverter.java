@@ -5,8 +5,7 @@ import javafx.util.Pair;
 import javafx.util.StringConverter;
 
 /**
- * This class is used to convert a Pair of String <pre>{@code Pair<\String, String>}</pre> 
- * To A String by Overriding the native toString method.
+ * This class is used to convert a Pair of String to a common String.
  * @author Yewspine
  * */
 public class PairStringConverter extends StringConverter<Pair<String, String>>
@@ -16,7 +15,7 @@ public class PairStringConverter extends StringConverter<Pair<String, String>>
   {}
 
   /**
-   * The overriden <pre>{@code toString()}</pre> method extract the key of the pair and return it
+   * The overriden <pre>toString()</pre> method extract the key of the pair and return it
    * In case the pair or the key is null, an empty String is sent
    * Personnal note here, I should change this method return value 
    * for an <pre>{@code Optionnal<String>}</pre>.
@@ -31,9 +30,9 @@ public class PairStringConverter extends StringConverter<Pair<String, String>>
 
   /**
    * Normally it should create a <pre>{@code Pair<String, String>}</pre> from a 
-   * <pre>String</pre> However on this context, this is useless and wil always throw an Exception
-   * @param string the <pre>{@code String}</pre> value to convert to a Pair of String 
-   * @throws UnsupportedOperationException Abort the operation with an error message
+   * <pre>String</pre> However in this context, this is useless and wil always throw an Exception
+   * @param string the <pre>String</pre> value to convert to a Pair of String 
+   * @throws UnsupportedOperationException Java internal Exception meaning this operation is not supported and that will never be
    * @return while the signature assure it would return a <pre>{@code Pair<String, String>}</pre> this will never happens
    * */
   @Override
