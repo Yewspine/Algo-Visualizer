@@ -34,7 +34,7 @@ jobs:
           cp -r target/reports/apidocs /tmp/javadoc-copy
           rm -rf -- * .[^.]* || true
           mkdir -p docs
-          cp -r tmp/javadoc-copy/* docs/
+          cp -r /tmp/javadoc-copy/* docs/
           git add docs
           git commit -m "Generate Javadoc documentation"
       
