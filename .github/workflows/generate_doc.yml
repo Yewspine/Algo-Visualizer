@@ -23,8 +23,8 @@ jobs:
       - name: Build and generate aggregate Javadoc
         run: mvn clean javadoc:aggregate
 
-      - name: Liste les fichiers générés par Maven
-        run: ls -l
+      - name: List javadoc generated files 
+        run: ls -lR target
 
       - name: Create docs branch and copy Javadoc
         run: |
