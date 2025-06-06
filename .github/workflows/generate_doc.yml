@@ -31,7 +31,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git switch --orphan docs
-          cp -r target/site/apidocs /tmp/javadoc-copy
+          cp -r target/reports/apidocs /tmp/javadoc-copy
           rm -rf -- * .[^.]* || true
           mkdir -p docs
           cp -r tmp/javadoc-copy/* docs/
