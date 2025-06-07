@@ -7,9 +7,11 @@
     - [Depedencies](#Depedencies)
 - [Contribute](#Contribute)
 - [Report Bug](#Issue)
+
 ## About
 
-This software is made for educational purpose. The software allow a user to visualize how a given algorithm actually work. Using visual feedback, the software will descend step by step the code of an algorithm and show what's happening to the data. It will also contain further information like Space and Time complexity, algorithm history, different implementation in different language, and a resumee of how the algo work.
+This software is made for educational purpose. The software allow a user to visualize how a given algorithm actually work. Using visual feedback, the software will descend step by step the code of an algorithm and show what's happening to the data. It will also contain further information like Space and Time complexity, algorithm history, different implementation in different language, and a resumee of how the algo work. The project docs is available at https://yewspine.github.io/Algo-Visualizer/com.visualizer/module-summary.html
+
 
 ## Features
 
