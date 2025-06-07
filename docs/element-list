@@ -1,0 +1,9 @@
+module:com.visualizer
+com.visualizer
+com.visualizer.Converter
+com.visualizer.DomainObject
+com.visualizer.DomainObject.Algorithms
+com.visualizer.Model
+com.visualizer.View
+com.visualizer.View.Fragment
+com.visualizer.ViewModel
