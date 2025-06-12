@@ -1,4 +1,4 @@
-package com.visualizer.View.Composition;
+package com.visualizer.View.Fragment;
 
 import javafx.geometry.Insets;
 import javafx.scene.layout.ColumnConstraints;
@@ -15,17 +15,18 @@ import com.visualizer.View.Fragment.FragmentView;
  * and the other the graph
  * @author Yewspine
  * */
-public class CenterViewComposition extends FragmentView<Coordinator>
+public class CenterViewFragment extends FragmentView<Coordinator>
 { 
   private GridPane grid = new GridPane();
   private ColumnConstraints code_viewer = new ColumnConstraints();
   private ColumnConstraints graph = new ColumnConstraints();
 
-  public CenterViewComposition(Coordinator coordinator)
+  public CenterViewFragment(Coordinator coordinator)
   {
     super(coordinator);
     initConstraint();
     setupListeners();
+    updateCodeView();
     createView();
   }
 
@@ -44,7 +45,7 @@ public class CenterViewComposition extends FragmentView<Coordinator>
    * */
   private void setupListeners()
   {
-    controller.onAlgorithmChanged((obs, old, fresh) -> updateCodeView());
+    controller.onLanguageChanged((obs, old, fresh) -> updateCodeView());
     controller.onAlgorithmChanged((obs, old, fresh) -> updateCodeView());
   }
 
