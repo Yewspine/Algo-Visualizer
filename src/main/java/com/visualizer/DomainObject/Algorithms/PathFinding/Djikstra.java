@@ -19,7 +19,7 @@ public class Djikstra implements Algorithm
 
   public Djikstra()
   {}
-  
+ 
   @Override
   public AlgorithmMetadata getMetadata()
   {

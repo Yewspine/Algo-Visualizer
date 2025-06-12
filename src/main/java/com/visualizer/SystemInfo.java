@@ -1,5 +1,9 @@
 package com.visualizer;
 
+import java.util.ServiceLoader;
+
+import com.visualizer.Model.Algorithm;
+
 /**
  * A debugging class giving basic system information, 
  * useful to have when reporting issues
@@ -36,6 +40,17 @@ public class SystemInfo {
         System.getProperty("os.version"),
         System.getProperty("os.arch")
       );
+  }
+
+  /**
+   * Print in the console the name of the class found by the reflection algorithm, debug only
+   * */
+  public static void debugServiceLoader()
+  {
+    ServiceLoader<Algorithm> loader = ServiceLoader.load(Algorithm.class);
+    loader.forEach(algo -> 
+      System.out.println("DEBUG ServiceLoader found: " + algo.getClass().getName())
+    );
   }
 
 }

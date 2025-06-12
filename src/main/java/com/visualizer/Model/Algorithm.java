@@ -8,6 +8,6 @@ package com.visualizer.Model;
  * */
 public interface Algorithm 
 {
-  void execute();
   AlgorithmMetadata getMetadata();
+  void execute();
 }
