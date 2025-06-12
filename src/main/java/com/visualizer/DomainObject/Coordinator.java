@@ -1,5 +1,6 @@
 package com.visualizer.DomainObject;
 
+import java.util.Objects;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,20 +32,26 @@ public class Coordinator
    * */
   public void selectAlgorithm(String algorithm)
   {
-    selected_algorithm.set(algorithm);
-    // Don't care about what was, focus on what's now 
-    algorithm_listener.forEach(listener -> listener.changed(null, null, algorithm));
+    if (!Objects.equals(selected_algorithm.get(), algorithm)) 
+    {
+      selected_algorithm.set(algorithm);
+      // Don't care about what was, focus on what's now 
+      algorithm_listener.forEach(listener -> listener.changed(null, null, algorithm));
+    }
   }
 
   /**
-   * Update the selecte programming language
+   * Update the selected programming language
    * @param language A Pair containing the language name as key and it extension as a value 
    * */
   public void selectLanguage(Pair<String, String> language)
   {
-    selected_language.set(language);
-    // Don't care about what was, focus on what's now
-    selector_listener.forEach(listener -> listener.changed(null, null, language));
+    if (!Objects.equals(selected_language.get(), language)) 
+    {
+      selected_language.set(language);
+      // Don't care about what was, focus on what's now 
+      selector_listener.forEach(listener -> listener.changed(null, null, language));
+    }
   }
 
   /**
@@ -55,6 +62,11 @@ public class Coordinator
   public void onAlgorithmChanged(ChangeListener<String> listener)
   {
     algorithm_listener.add(listener);
+    String current = selected_algorithm.get();
+    if ( current != null )
+    {
+      listener.changed(null, null, current);
+    }
   }
 
   /**
@@ -65,6 +77,11 @@ public class Coordinator
   public void onLanguageChanged(ChangeListener<Pair<String, String>> listener)
   {
     selector_listener.add(listener);
+    Pair<String, String> current = selected_language.get();
+    if ( current != null )
+    {
+      listener.changed(null, null, current);
+    }
   }
 
   /**
