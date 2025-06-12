@@ -1,92 +1,128 @@
-# Algo visualizer
+# Algo Visualizer
 
-## Summary 
-- [About](#About)
-- [Features](#Features)
-- [Build](#Build)
-    - [Depedencies](#Depedencies)
-- [Contribute](#Contribute)
-- [Report Bug](#Issue)
+## Table of Contents
+
+* [About](#about)
+* [Features](#features)
+* [Build Instructions](#build-instructions)
+  * [Dependencies](#dependencies)
+* [Contributing](#contributing)
+* [Adding an Algorithm](#adding-an-algorithm)
+* [Reporting Issues](#reporting-issues)
+* [Notes](#notes)
+
+---
 
 ## About
 
-This software is made for educational purpose. The software allow a user to visualize how a given algorithm actually work. Using visual feedback, the software will descend step by step the code of an algorithm and show what's happening to the data. It will also contain further information like Space and Time complexity, algorithm history, different implementation in different language, and a resumee of how the algo work. The project docs is available at https://yewspine.github.io/Algo-Visualizer/com.visualizer/module-summary.html
+**Algo Visualizer** is an educational tool designed to help students or curious understand how does algorithms work. It provides step-by-step visualizations of algorithm executions, allowing users to observe how data evolves over time.
+
+The application will also includes supplementary information such as:
+
+* Time and space complexity
+* Algorithm origin and history
+* Implementations in different programming languages
+* A concise summary of how the algorithm operates
+
+Code Documentation is available here:
+[https://yewspine.github.io/Algo-Visualizer/com.visualizer/module-summary.html](https://yewspine.github.io/Algo-Visualizer/com.visualizer/module-summary.html)
+
+---
 
 ## Features
 
-*Up coming*
+*Coming soon.*
 
-## Build
+---
 
-### Depedencies
+## Build Instructions
 
-|Depedencie  |Version |
-|:----------:|:------:|
-|Maven       |3.8.7   |
-|JDK         |22      |
-|JavaFX      |24      |
-|Reflection  |0.10.2  |
+### Dependencies
 
-To compile run the following : 
+| Dependency | Version |
+| ---------- | ------- |
+| Maven      | 3.8.7   |
+| JDK        | 22      |
+| JavaFX     | 24      |
+| Reflection | 0.10.2  |
 
-1. Run clean test if you want to be sure everything works 
+### Steps to Build
 
-```bash 
-mvn clean test
-```
-
-2. Create the launcher 
+1. **Run tests (optional but recommended):**
 
 ```bash
-mvn clean javafx:jlink
+  mvn clean test
 ```
 
-3. Copy the target folder with your binaries
+2. **Build the application with JavaFX support:**
 
 ```bash
-cp -r target/visualizer /path/to/to/your/binaries
+  mvn clean javafx:jlink
 ```
 
-4. Execute the file
-
-Execute the file `visualizer` found at : `visualizer/bin/visualizer`
-
-## Contribute
-
-You want to contribute ? Awesome ! This process is quite simple 
-
-Clone the repo: 
+3. **Copy the build artifacts:**
 
 ```bash
-git clone https://github.com/Yewspine/Algo-Visualizer.git
+  cp -r target/visualizer /path/to/your/binaries
 ```
-Or if you're using ssh: 
+
+4. **Run the application:**
+
+Execute the file located at: `visualizer/bin/visualizer`
+
+---
+
+## Contributing
+
+Contributions are welcome!
+
+To get started:
+
+1. Clone the repository:
 
 ```bash
-git clone git@github.com:Yewspine/Algo-Visualizer.git
+  git clone https://github.com/Yewspine/Algo-Visualizer.git
 ```
 
-create a new branch for your new feature: 
+2. Create a new branch:
 
 ```bash
-git branch <Feature name>
+  git checkout -b <feature-name>
 ```
-Do some commit following the [conventionnal commit](https://www.conventionalcommits.org/en/v1.0.0/) specification and then push to open a new PR: 
+
+3. Follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification for your commit messages.
+
+4. Push your branch and open a pull request:
 
 ```bash
-git push
+  git push origin <feature-name>
 ```
 
-## Adding an Algorithm.
+---
 
-In case you want to add an algorithm. Create a new Branch makes sure to know the algorithm and implement it with the most simple approach possible.
-One liner are strictly prohibited, it must be equivalent to it pseudo-code as much as possible. Then put the java code defining it into it's own category ( e,g Pathfinding, Sort, Search, etc... ).
-the script itself is stored in txt under `ressources/script` folder under the convention : "<Algo-name>/<language-extension>.txt" { e.g BubbleSort/py.txt )
+## Adding an Algorithm
 
-## Issue
+To implement a new algorithm:
 
-If you encounter a bug, please report it using the Issue tab on github and create a new Issue, I will review it when I would have time
+1. Create a dedicated branch.
+2. Use a straightforward and educational implementation, one liners are prohibited.
+3. Ensure the code closely follows the standard pseudocode logic.
+4. Place the Java source code into the relevant category (e.g., `Pathfinding`, `Sort`, `Search`, etc.).
+5. Add a script version of the algorithm in the `resources/script` directory, using the naming format:
+   `<AlgorithmName>/<language-extension>.txt`
+   *Example:* `BubbleSort/py.txt`
 
-## Note 
+---
 
-If you have an idea for the name of the application, feel free to tell it, because Calling it " Visualizer " can be frustrating
+## Reporting Issues
+
+If you find a bug or issue, please submit it via the [GitHub Issues](https://github.com/Yewspine/Algo-Visualizer/issues) page.
+Bugs will be reviewed as soon as possible.
+
+---
+
+## Notes
+
+Have a better name idea for this application?
+“Visualizer” is just a placeholder, so feel free to open an issue if you have something better.
+
