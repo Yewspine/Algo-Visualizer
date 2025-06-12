@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import com.visualizer.View.MainView;
+import com.visualizer.SystemInfo;
 
 /**
  * JavaFX App
@@ -19,6 +20,7 @@ public class App extends Application
    * */
   @Override
   public void start(Stage stage) throws Exception { 
+    SystemInfo.debugServiceLoader();
     MainView view = new MainView();
     Scene scene = new Scene(view, 800, 600); 
     stage.setScene(scene);
