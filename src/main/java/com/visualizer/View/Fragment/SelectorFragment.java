@@ -50,7 +50,10 @@ public class SelectorFragment extends FragmentView<Coordinator>
     language.setConverter(new PairStringConverter()); 
 
     language.setItems(language_classes);
-    language.setValue(language.getItems().get(0)); 
+    // Initialize default selection for controller and choiceBox
+    Pair<String, String> default_language = language.getItems().get(0);
+    language.setValue(default_language); 
+    controller.selectLanguage(default_language);
   }
 
   /**
