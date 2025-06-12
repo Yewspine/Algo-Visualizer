@@ -12,7 +12,6 @@
 
 This software is made for educational purpose. The software allow a user to visualize how a given algorithm actually work. Using visual feedback, the software will descend step by step the code of an algorithm and show what's happening to the data. It will also contain further information like Space and Time complexity, algorithm history, different implementation in different language, and a resumee of how the algo work. The project docs is available at https://yewspine.github.io/Algo-Visualizer/com.visualizer/module-summary.html
 
-
 ## Features
 
 *Up coming*
@@ -65,8 +64,8 @@ Or if you're using ssh:
 
 ```bash
 git clone git@github.com:Yewspine/Algo-Visualizer.git
-
 ```
+
 create a new branch for your new feature: 
 
 ```bash
@@ -77,6 +76,12 @@ Do some commit following the [conventionnal commit](https://www.conventionalcomm
 ```bash
 git push
 ```
+
+## Adding an Algorithm.
+
+In case you want to add an algorithm. Create a new Branch makes sure to know the algorithm and implement it with the most simple approach possible.
+One liner are strictly prohibited, it must be equivalent to it pseudo-code as much as possible. Then put the java code defining it into it's own category ( e,g Pathfinding, Sort, Search, etc... ).
+the script itself is stored in txt under `ressources/script` folder under the convention : "<Algo-name>/<language-extension>.txt" { e.g BubbleSort/py.txt )
 
 ## Issue
 
