@@ -54,19 +54,25 @@ Code Documentation is available here:
   mvn clean test
 ```
 
-2. **Build the application with JavaFX support:**
+2. **Package the application:**
+
+```bash
+  mvn clean package
+```
+
+3. **Build the application with JavaFX support:**
 
 ```bash
   mvn clean javafx:jlink
 ```
 
-3. **Copy the build artifacts:**
+4. **Copy the build artifacts:**
 
 ```bash
   cp -r target/visualizer /path/to/your/binaries
 ```
 
-4. **Run the application:**
+5. **Run the application:**
 
 Execute the file located at: `visualizer/bin/visualizer`
 
@@ -111,6 +117,8 @@ To implement a new algorithm:
 5. Add a script version of the algorithm in the `resources/script` directory, using the naming format:
    `<AlgorithmName>/<language-extension>.txt`
    *Example:* `BubbleSort/py.txt`
+
+NOTA: Do not forget to `mvn clean package` every time you add something new in resources folder. It might not get added to classPath either way
 
 ---
 
