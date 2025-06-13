@@ -1,0 +1,24 @@
+.code-area 
+{
+  -fx-font-family: "fira code", monospace;
+  -fx-font-size: 14px;
+  -fx-background-color: #1e1e1e;
+  -fx-text-fill: #d4d4d4;
+}
+
+.keyword
+{
+  -fx-fill: #569cd6;
+  -fx-font-weight: bold;
+}
+
+.string
+{
+  -fx-fill: #d69955;
+}
+
+.comment
+{
+  -fx-fill: #6a9955;
+  -fx-font-style: italic;
+}
