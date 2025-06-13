@@ -1,6 +1,11 @@
 package com.visualizer.View.Fragment;
 
+import java.io.InputStream;
+import java.lang.IllegalStateException; 
+import java.util.Scanner;
+
 import javafx.geometry.Insets;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -20,14 +25,26 @@ public class CenterViewFragment extends FragmentView<Coordinator>
   private GridPane grid = new GridPane();
   private ColumnConstraints code_viewer = new ColumnConstraints();
   private ColumnConstraints graph = new ColumnConstraints();
+  private TextArea code_display = new TextArea();
 
   public CenterViewFragment(Coordinator coordinator)
   {
     super(coordinator);
     initConstraint();
+    initTextAreaProperty(); 
     setupListeners();
     updateCodeView();
     createView();
+  }
+
+  private void initTextAreaProperty()
+  {
+    code_display.setPrefColumnCount(74);
+    code_display.setPrefRowCount(50);
+    code_display.setScrollTop(3d);
+    code_display.setScrollLeft(3d);
+    code_display.setWrapText(true);
+    code_display.setEditable(false);
   }
 
   /**
@@ -49,9 +66,10 @@ public class CenterViewFragment extends FragmentView<Coordinator>
     controller.onAlgorithmChanged((obs, old, fresh) -> updateCodeView());
   }
 
+  //@TODO Move this code to a proper controller.
   /**
-   * At the moment, just some fancy prints are done here
-   * Should be move in the Controller and a proper view should be changed
+   * Change the code View when ( graph + text area ) 
+   * whenever a new language or algorithm is picked.
    * */
   private void updateCodeView()
   {
@@ -59,9 +77,25 @@ public class CenterViewFragment extends FragmentView<Coordinator>
     Pair<String, String> language = controller.selectedLanguageProperty().get();
     if ( algorithm != null && language != null )
     {
-      String filename = String.format("%s.txt", language.getValue());
-      // For debugging purpose
-      System.out.println(String.format("%s/%s", algorithm, filename));
+      String filename = String.format("/scripts/%s/%s.txt", algorithm.replaceAll("\\s", ""), language.getValue());
+      InputStream input = getClass().getResourceAsStream(filename);
+      
+      if ( input == null ) 
+      {
+        code_display.setText("File not found " + filename);
+        throw new IllegalStateException("File not found " + filename);
+      }
+
+      StringBuilder text = new StringBuilder();
+      try ( Scanner scanner = new Scanner(input) )
+      {
+        while ( scanner.hasNextLine() )
+        {
+          // @TODO Conver the InputStream to a BufferStream 
+          text.append(scanner.nextLine()).append("\n");
+        }
+        code_display.setText(text.toString());
+      }
     }
   }
 
@@ -70,6 +104,8 @@ public class CenterViewFragment extends FragmentView<Coordinator>
    * */
   protected void createView()
   {
+    grid.setRowIndex(code_display, 0);
+    grid.getChildren().add(code_display);
     this.getChildren().add(grid);
   }
 

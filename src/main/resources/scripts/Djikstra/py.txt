@@ -1,0 +1,31 @@
+def dijkstra(G, poids, s_deb):
+  S = list(G.keys())
+  P = set()
+  d = {a: float('inf') for a in S}
+  d[s_deb] = 0
+  predecesseur = {}
+
+  while len(P) < len(S):
+    a = None
+    min_dist = float('inf')
+    for sommet in S:
+      if sommet not in P and d[sommet] < min_dist:
+        min_dist = d[sommet]
+        a = sommet 
+    P.add(a)
+
+  for b in G[a]:
+    if b not in P:
+      if (a, b) in poids:
+        p = poids[(a, b)]
+      elif (b, a) in poids:
+        p = poids[(b, a)]
+      else:
+        continue
+
+    if d[b] > d[a] + p:
+      d[b] = d[a] + p
+      predecesseur[b] = a
+
+  return d, predecesseur
+
