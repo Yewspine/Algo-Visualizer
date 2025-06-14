@@ -1,5 +1,7 @@
 module com.visualizer {
   requires javafx.controls;
+  requires org.fxmisc.richtext;
+  requires org.fxmisc.flowless;
   exports com.visualizer;
   exports com.visualizer.Converter;
   exports com.visualizer.DomainObject;

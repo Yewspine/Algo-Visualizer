@@ -1,24 +1,17 @@
 .code-area 
 {
-  -fx-font-family: "fira code", monospace;
-  -fx-font-size: 14px;
-  -fx-background-color: #1e1e1e;
-  -fx-text-fill: #d4d4d4;
+  -fx-background-color: #1c1c1e;
 }
 
-.keyword
+.lineno
 {
-  -fx-fill: #569cd6;
-  -fx-font-weight: bold;
+  -fx-background-color: #0a0a0a; 
 }
 
-.string
+.code-area .text 
 {
-  -fx-fill: #d69955;
+  -fx-font-familly: "fira code", monospace;
+  -fx-font-size: 20px;
+  -fx-fill: #ffffff;
 }
 
-.comment
-{
-  -fx-fill: #6a9955;
-  -fx-font-style: italic;
-}
