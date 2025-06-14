@@ -36,7 +36,6 @@ public class CenterViewFragment extends FragmentView<Coordinator>
     createView();
   }
 
-
   /**
    * Set Properties for CodeArea
    * */

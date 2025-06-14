@@ -23,7 +23,9 @@ public class App extends Application
     MainView view = new MainView();
     Scene scene = new Scene(view, 800, 600);
     // CSS file for Code HighLight.
-    scene.getStylesheets().add(getClass().getResource("/styles/highlight.css").toExternalForm());
+    scene.getStylesheets().addAll(
+        getClass().getResource("/styles/highlight.css").toExternalForm(),
+        getClass().getResource("/styles/main.css").toExternalForm());
     stage.setScene(scene);
     stage.show();
   }
