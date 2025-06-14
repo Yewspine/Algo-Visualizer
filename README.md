@@ -44,7 +44,7 @@ Code Documentation is available here:
 | Maven      | 3.8.7   |
 | JDK        | 22      |
 | JavaFX     | 24      |
-| Reflection | 0.10.2  |
+| FXmisc     | 0.11.5  |
 
 ### Steps to Build
 
