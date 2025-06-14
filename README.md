@@ -3,6 +3,7 @@
 ## Table of Contents
 
 * [About](#about)
+* [Looks](#looks)
 * [Features](#features)
 * [Build Instructions](#build-instructions)
   * [Dependencies](#dependencies)
@@ -26,6 +27,14 @@ The application will also includes supplementary information such as:
 
 Code Documentation is available here:
 [https://yewspine.github.io/Algo-Visualizer/com.visualizer/module-summary.html](https://yewspine.github.io/Algo-Visualizer/com.visualizer/module-summary.html)
+
+---
+
+## Looks
+
+This is how the software looks for now. Remember, this is not the final product, just the current state of the GUI.
+
+![GUI of the Algorithm Visualizer](.github/images/gui_2025_06_14.png)
 
 ---
 
