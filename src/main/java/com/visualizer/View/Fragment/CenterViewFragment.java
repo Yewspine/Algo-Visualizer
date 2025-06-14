@@ -6,12 +6,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Scanner;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.Priority;
 import javafx.util.Pair;
 
 import org.fxmisc.richtext.CodeArea;
