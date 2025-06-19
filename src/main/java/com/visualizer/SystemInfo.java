@@ -2,7 +2,7 @@ package com.visualizer;
 
 import java.util.ServiceLoader;
 
-import com.visualizer.Model.Algorithm;
+//import com.visualizer.Model.Algorithm;
 
 /**
  * A debugging class giving basic system information, 
@@ -45,6 +45,7 @@ public class SystemInfo {
   /**
    * Print in the console the name of the class found by the reflection algorithm, debug only
    * */
+  /*
   public static void debugServiceLoader()
   {
     ServiceLoader<Algorithm> loader = ServiceLoader.load(Algorithm.class);
@@ -52,5 +53,6 @@ public class SystemInfo {
       System.out.println("DEBUG ServiceLoader found: " + algo.getClass().getName())
     );
   }
+  */
 
 }

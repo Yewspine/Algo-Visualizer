@@ -3,9 +3,11 @@ package com.visualizer;
 import java.lang.Exception;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import com.visualizer.View.MainView;
+import com.visualizer.View.Selector.SelectorView;
+import com.visualizer.ViewModel.Selector.SelectorViewModel;
 import com.visualizer.SystemInfo;
 
 /**
@@ -20,12 +22,13 @@ public class App extends Application
    * */
   @Override
   public void start(Stage stage) throws Exception { 
-    MainView view = new MainView();
+    var view = new SelectorView(new SelectorViewModel());
     Scene scene = new Scene(view, 800, 600);
     // CSS file for Code HighLight.
-    scene.getStylesheets().addAll(
-        getClass().getResource("/styles/highlight.css").toExternalForm(),
+    /*
+    scene.getStylesheets().add(
         getClass().getResource("/styles/main.css").toExternalForm());
+    */
     stage.setScene(scene);
     stage.show();
   }
