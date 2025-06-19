@@ -1,4 +1,4 @@
-package com.visualizer.View.Fragment;
+package com.visualizer.Model;
 
 import javafx.scene.layout.Region;
 
@@ -9,18 +9,18 @@ import javafx.scene.layout.Region;
  * @param <T> The Controller class for the Fragment
  * @author Yewspine
  * */
-public abstract class FragmentView<T> extends Region
+public abstract class View<T> extends Region
 {
-  protected final T controller;
-
-  // Basic Depedency injection 
-  public FragmentView(T controller)
+  protected final T viewModel;
+  
+  public View(T viewModel)
   {
-    this.controller = controller;
+    this.viewModel = viewModel;
   }
 
-  /**
+    /**
    * This method construct the View of the Fragment, this is present in every Fragment
    * */
   protected abstract void createView();
+
 }
