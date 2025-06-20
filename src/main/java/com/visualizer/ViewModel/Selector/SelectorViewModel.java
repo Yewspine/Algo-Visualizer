@@ -21,6 +21,12 @@ public class SelectorViewModel implements SelectorService
 
   public SelectorViewModel()
   {
+    populateChoiceBox();
+    setupListener();
+  }
+
+  private void populateChoiceBox()
+  {
     choices.addAll(
       new Pair("Pascal", "pas"),
       new Pair("C++", "cpp"),
@@ -32,7 +38,10 @@ public class SelectorViewModel implements SelectorService
       new Pair("Python", "py"),
       new Pair("PHP", "php")
     );
+  }
 
+  private void setupListener()
+  {
     selectedPair.addListener((obs, old, fresh) -> {
       if ( fresh == null )
       {
