@@ -1,0 +1,6 @@
+module:com.visualizer
+com.visualizer
+com.visualizer.Converter
+com.visualizer.Model
+com.visualizer.View.Selector
+com.visualizer.ViewModel.Selector
